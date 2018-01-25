@@ -1,0 +1,14 @@
+<%= simple_form_for(@entry) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :amount %>
+    <%= f.input :comment %>
+    <%= f.association :user %>
+    <%= f.association :category %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
