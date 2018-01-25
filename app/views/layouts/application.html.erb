@@ -1,14 +1,75 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>IncExpTracker</title>
+    <title>Inc/Exp Tracker</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
-    <%= yield %>
+
+    <% unless flash.empty? %>
+      <script type="text/javascript">
+        <% flash.each do |f| %>
+          <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+          toastr['<%= type %>']('<%= f[1] %>');
+        <% end %>
+      </script>
+    <% end %>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+        <%= link_to("World's Best Inc/Exp Tracker", root_path, 
+            class:  "navbar-brand") %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <div class="nav-link">
+                  abc
+                </div>
+            </li>
+          </ul>
+          
+          <ul class="navbar-nav">
+              <% if user_signed_in? %>
+                <li class="nav-item active">
+                  <%= link_to("Hi, #{current_user.name}", current_user, 
+                    class:  "nav-link") %>
+                </li>
+                <li class="nav-item active">
+                  <%= link_to('Logout', destroy_user_session_path, 
+                    method: :delete, class: "nav-link") %>
+                </li>
+              <% else %>
+                <li class="nav-item active">
+                  <%= link_to('Login', new_user_session_path, 
+                    class:  "nav-link") %>
+                </li>
+                <li class="nav-item active">
+                  <%= link_to('Register', new_user_registration_path, 
+                    class:  "nav-link")  %>
+                </li>
+              <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav> 
+    
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    
   </body>
 </html>
