@@ -1,0 +1,25 @@
+env:
+  global:
+  - CC_TEST_REPORTER_ID=7994b1a47b24b8e0f700f667a369b82de89e944e81ffa14ee4ae271f1a857a50
+language: ruby
+rvm:
+  - 2.4.3
+services:
+  - postgresql
+before_script:
+  - psql -c "create database inc_exp_tracker_test;" -U postgres
+  - bundle exec rake db:migrate
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - "./cc-test-reporter before-build"
+script:
+  - echo 'hola, que pasa?'
+after_script:
+  - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+deploy:
+  provider: heroku
+  api_key:
+    secure: t5cpuRQyyIsw2IYJRck10j8Y2WVltD0rpzo27f1P4XPfv8EissvPeIu7mpQFA
+  app: pacific-springs-78455
+  on: master
+  run: "rake db:migrate"
