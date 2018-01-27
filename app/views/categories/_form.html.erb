@@ -3,8 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :type %>
-    <%= f.association :user %>
+    <%= f.input :group, collection: @category_group_options %>
   </div>
 
   <div class="form-actions">

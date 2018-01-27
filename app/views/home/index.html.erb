@@ -1,2 +1,21 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% if current_user %>
+  <h3 class="text-center">My Categories</h3>
+  <% if @categories.exists? %>
+    <div class="list-group categories-list">
+      <% @categories.each do |category| %>
+        <div class="list-group-item">
+          <%= link_to(category.name + ' - ' + category.group, edit_category_path(category)) %>
+          <%= link_to ' - Destroy', category, method: :delete, data: { confirm: 'This will also delete all the associated entries. Are you sure you want to continue?' } %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <h5 class="text-center">You have no categories!</h5>
+  <% end %>
+  <%= link_to (fa_icon "plus-circle", text: 'Create new category'), new_category_path %>
+<% else %>
+  <p class="text-center">Please, log in or sign up to access the task tracker.</p>
+<% end %>
+
+<hr>
+
