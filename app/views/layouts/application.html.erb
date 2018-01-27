@@ -41,7 +41,7 @@
           <ul class="navbar-nav">
               <% if user_signed_in? %>
                 <li class="nav-item active">
-                  <%= link_to("Hi, #{current_user.name}", current_user, 
+                  <%= link_to("Hi, #{current_user.email}", root_path, 
                     class:  "nav-link") %>
                 </li>
                 <li class="nav-item active">
