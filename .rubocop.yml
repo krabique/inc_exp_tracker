@@ -1,0 +1,25 @@
+AllCops:
+  TargetRubyVersion: 2.2
+  Exclude:
+    - spec/**/*
+    - db/schema.rb
+Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
+  Exclude:
+    - config/initializers/money.rb
+    
+Metrics/BlockLength:
+  Exclude:
+    - config/initializers/simple_form_bootstrap.rb
+    - Guardfile
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/20180125201545_devise_create_users.rb
+    
+Style/MixinUsage:
+  Exclude:
+    - bin/setup
+    - bin/update

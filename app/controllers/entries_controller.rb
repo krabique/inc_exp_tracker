@@ -1,13 +1,12 @@
 class EntriesController < ApplicationController
-  before_action :set_entry, only: [:edit, :update, :destroy]
-  before_action :current_user_categories, only: [:new, :edit]
+  before_action :set_entry, only: %i[edit update destroy]
+  before_action :current_user_categories, only: %i[new edit]
 
   def new
     @entry = current_user.entries.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @entry = current_user.entries.new(entry_params)
@@ -33,11 +32,11 @@ class EntriesController < ApplicationController
       redirect_to root_path, notice: 'Entry was successfully destroyed.'
     else
       redirect_to root_path, notice: 'That entry does not belong to this user'
-    end    
+    end
   end
 
   private
-  
+
   def set_entry
     @entry = Entry.find(params[:id])
   end
@@ -45,7 +44,7 @@ class EntriesController < ApplicationController
   def entry_params
     params.require(:entry).permit(:amount, :comment, :category_id)
   end
-  
+
   def current_user_categories
     @current_user_categories = current_user.categories
   end
