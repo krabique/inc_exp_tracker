@@ -1,4 +1,21 @@
 <% if current_user %>
+  <h3 class="text-center">My Entries</h3>
+  <% if @entries.exists? %>
+    <div class="list-group entries-list">
+      <% @entries.each do |entry| %>
+        <div class="list-group-item">
+          <%= link_to(entry.amount.to_s + ' - ' + entry.comment + ' - ' + entry.category.group + ' - ' + entry.category.name, edit_entry_path(entry)) %>
+          <%= link_to ' - Destroy', entry, method: :delete, data: { confirm: 'Are you sure you want to continue?' } %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <h5 class="text-center">You have no entries!</h5>
+  <% end %>
+  <%= link_to (fa_icon "plus-circle", text: 'Create new entry'), new_entry_path %>    
+  
+  <hr>
+  
   <h3 class="text-center">My Categories</h3>
   <% if @categories.exists? %>
     <div class="list-group categories-list">
@@ -13,9 +30,7 @@
     <h5 class="text-center">You have no categories!</h5>
   <% end %>
   <%= link_to (fa_icon "plus-circle", text: 'Create new category'), new_category_path %>
+  
 <% else %>
-  <p class="text-center">Please, log in or sign up to access the task tracker.</p>
+  <p class="text-center">Please, log in or sign up to access the inc/exp tracker.</p>
 <% end %>
-
-<hr>
-

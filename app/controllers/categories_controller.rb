@@ -35,8 +35,12 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
-    redirect_to root_path, notice: 'Category was successfully destroyed.'
+    if current_user.categories.include?(@category)
+      @category.destroy
+      redirect_to root_path, notice: 'Category was successfully destroyed.'
+    else
+      redirect_to root_path, notice: 'That category does not belong to this user'
+    end
   end
 
   private
