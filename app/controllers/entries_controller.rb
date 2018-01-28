@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[edit update destroy]
   before_action :current_user_categories, only: %i[new edit]
