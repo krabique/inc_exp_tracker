@@ -9,7 +9,7 @@ class Entry < ApplicationRecord
   validates :amount_cents, presence: true
   validates :user, presence: true
   validates :category, presence: true
-  validates :comment, presence: true
+  validates :comment, length: { maximum: 80 }
 
   validate :category_belongs_to_user
 
