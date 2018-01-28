@@ -3,6 +3,7 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[edit update destroy]
   before_action :current_user_categories, only: %i[new edit]
+  before_action :authorize_action, only: %i[edit update destroy]
 
   def new
     @entry = current_user.entries.new
@@ -49,5 +50,11 @@ class EntriesController < ApplicationController
 
   def current_user_categories
     @current_user_categories = current_user.categories
+  end
+  
+  def authorize_action
+    return if @entry.user == current_user
+
+    redirect_back fallback_location: root_path, alert: 'Not authorized!'
   end
 end
