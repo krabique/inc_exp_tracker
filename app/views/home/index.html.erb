@@ -6,7 +6,10 @@
       id: "search-form") do %>
       <%= collection_select(
         :category, :name, @categories, :name, :name, 
-        { selected: params[:category] ? params[:category][:name] : nil }, 
+        { 
+          selected: params[:category] ? params[:category][:name] : nil,
+          include_blank: 'All categories'
+        }, 
         { class: "form-control" }
       ) %>
       <%= text_field_tag :start_date, params[:start_date],

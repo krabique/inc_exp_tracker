@@ -12,7 +12,7 @@ class HomeController < ApplicationController
     if !params[:category].blank? &&
        (!params[:start_date].blank? || !params[:end_date].blank?)
       entry_query.where(category_query_condition).where(date_query_condition)
-    elsif !params[:category].blank?
+    elsif params[:category] && !params[:category][:name].blank?
       entry_query.where(category_query_condition)
     elsif !params[:start_date].blank? || !params[:end_date].blank?
       entry_query.where(date_query_condition)
