@@ -50,7 +50,7 @@
     </table>  
   <% else %>
     <% if params[:category] %>
-      <h5 class="text-center">You have no <strong><%= params[:category] %></strong> entries in the given range!</h5>
+      <h5 class="text-center">You have no <strong><%= params[:category][:name] %></strong> entries in the given range!</h5>
     <% else %>
       <h5 class="text-center">You have no entries!</h5>
     <% end %>
