@@ -7,7 +7,10 @@ class Category < ApplicationRecord
   has_many :entries, dependent: :destroy
 
   validates :user, presence: true
-  validates :name, presence: true, length: { minimum: 1, maximum: 80 }
+  validates :name, 
+    presence: true, 
+    length: { minimum: 1, maximum: 80 },
+    uniqueness: { scope: :user }
   validates :group, presence: true, inclusion:
     { in: category_group_options }
 end
