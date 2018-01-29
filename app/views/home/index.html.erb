@@ -4,8 +4,11 @@
   <div class="form-group">
     <%= form_tag(root_path, :method => "get",
       id: "search-form") do %>
-      <%= text_field_tag :category, params[:category], 
-        placeholder: "Category", class: "form-control" %>
+      <%= collection_select(
+        :category, :name, @categories, :name, :name, 
+        { selected: params[:category] ? params[:category][:name] : nil }, 
+        { class: "form-control" }
+      ) %>
       <%= text_field_tag :start_date, params[:start_date],
         placeholder: "Start date", class: "form-control" %>
       <%= text_field_tag :end_date, params[:end_date],

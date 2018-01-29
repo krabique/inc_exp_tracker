@@ -34,7 +34,7 @@ class HomeController < ApplicationController
   end
 
   def category_query_condition
-    ['categories.name = ?', params[:category]]
+    ['categories.name = ?', params[:category][:name]]
   end
 
   def date_query_condition
