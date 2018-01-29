@@ -17,7 +17,7 @@ class HomeController < ApplicationController
     elsif !params[:start_date].blank? || !params[:end_date].blank?
       entry_query.where(date_query_condition)
     else
-      current_user.entries.includes(:category)
+      current_user.entries.includes(:category).order('date DESC')
     end
   end
 
