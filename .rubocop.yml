@@ -18,6 +18,7 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - db/migrate/20180125201545_devise_create_users.rb
+    - app/controllers/home_controller.rb
 
 Style/MixinUsage:
   Exclude:
