@@ -9,7 +9,7 @@ class HomeController < ApplicationController
   private
 
   def filter_entries
-    if !params[:category].blank? &&
+    if params[:category] && !params[:category][:name].blank? &&
        (!params[:start_date].blank? || !params[:end_date].blank?)
       entry_query.where(category_query_condition).where(date_query_condition)
     elsif params[:category] && !params[:category][:name].blank?
