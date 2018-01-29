@@ -17,12 +17,12 @@ class HomeController < ApplicationController
     elsif !params[:start_date].blank? || !params[:end_date].blank?
       entry_query.where(date_query_condition)
     else
-      current_user.entries.includes(:category).order('date DESC')
+      current_user.entries.includes(:category).order('date DESC').page(params[:page]).per(5)
     end
   end
 
   def entry_query
-    current_user.entries.joins(:category).order('date DESC')
+    current_user.entries.joins(:category).order('date DESC').page(params[:page]).per(5)
   end
 
   def start_date

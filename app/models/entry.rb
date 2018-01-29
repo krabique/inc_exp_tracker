@@ -13,6 +13,8 @@ class Entry < ApplicationRecord
   validates :date, presence: true
 
   validate :category_belongs_to_user
+  
+  paginates_per 5
 
   private
 

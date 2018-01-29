@@ -50,6 +50,8 @@ gem 'popper_js'
 gem 'font-awesome-rails'
 # For money values
 gem 'money-rails', '~> 1.9'
+# For pagination
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a

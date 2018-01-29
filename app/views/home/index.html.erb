@@ -47,7 +47,10 @@
           </tr>
         <% end %>
       </tbody>
-    </table>  
+    </table>
+
+    <%= paginate @entries %>
+
   <% else %>
     <% if params[:category] %>
       <h5 class="text-center">You have no <strong><%= params[:category][:name] %></strong> entries in the given range!</h5>
