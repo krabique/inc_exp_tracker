@@ -51,7 +51,7 @@ class EntriesController < ApplicationController
   def current_user_categories
     @current_user_categories = current_user.categories
   end
-  
+
   def authorize_action
     return if @entry.user == current_user
 

@@ -1,18 +1,58 @@
 <% if current_user %>
   <h3 class="text-center">My Entries</h3>
-  <% if @entries.exists? %>
-    <div class="list-group entries-list">
-      <% @entries.each do |entry| %>
-        <div class="list-group-item">
-          <%= link_to(entry.amount.to_s + ' - ' + entry.comment + ' - ' + entry.category.group + ' - ' + entry.category.name, edit_entry_path(entry)) %>
-          <%= link_to ' - Destroy', entry, method: :delete, data: { confirm: 'Are you sure you want to continue?' } %>
-        </div>
+  
+  <div class="form-group">
+    <%= form_tag(root_path, :method => "get",
+      id: "search-form") do %>
+      <%= text_field_tag :category, params[:category], 
+        placeholder: "Category", class: "form-control" %>
+      <%= text_field_tag :start_date, params[:start_date],
+        placeholder: "Start date", class: "form-control" %>
+      <%= text_field_tag :end_date, params[:end_date],
+        placeholder: "End date", class: "form-control" %>        
+      <%= button_tag(type: "submit", class: "btn btn-default",
+        id: "category-filter-button") do %>
+        <i class="fa fa-search" aria-hidden="true"></i>
       <% end %>
-    </div>
+    <% end %>
+  </div>
+
+  <% if @entries.exists? %>
+    <table class="table table-hover table-sm table-striped">
+      <thead>
+        <tr>
+          <th>Amount</th>
+          <th>Category</th>
+          <th>Type</th>
+          <th>Comment</th>
+          <th>Date</th>
+          <th>Controls</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @entries.each do |entry| %>
+          <tr>
+            <td><%= entry.amount_currency %> <%= entry.amount %></td>
+            <td><%= entry.category.name %></td>
+            <td><%= entry.category.group %></td>
+            <td><%= entry.comment %></td>
+            <td><%= entry.created_at %></td>
+            <td>
+              <%= link_to 'Edit', edit_entry_path(entry) %>
+              <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure you want to continue?' } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>  
   <% else %>
-    <h5 class="text-center">You have no entries!</h5>
+    <% if params[:category] %>
+      <h5 class="text-center">You have no <strong><%= params[:category] %></strong> entries in the given range!</h5>
+    <% else %>
+      <h5 class="text-center">You have no entries!</h5>
+    <% end %>
   <% end %>
-  <%= link_to (fa_icon "plus-circle", text: 'Create new entry'), new_entry_path %>    
+  <%= link_to (fa_icon "plus-circle", text: 'Create new entry'), new_entry_path %>   
   
   <hr>
   

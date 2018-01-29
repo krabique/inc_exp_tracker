@@ -18,8 +18,21 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - db/migrate/20180125201545_devise_create_users.rb
-    
+    - app/controllers/home_controller.rb
+
 Style/MixinUsage:
   Exclude:
     - bin/setup
     - bin/update
+    
+Metrics/AbcSize:
+  Exclude:
+    - app/controllers/home_controller.rb
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - app/controllers/home_controller.rb
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - app/controllers/home_controller.rb

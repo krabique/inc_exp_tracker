@@ -21,3 +21,16 @@
 .card {
   margin-top: 10px;
 }
+
+#search-form {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.form-control {
+  display: flex;
+}
+
+#category-filter-button {
+  margin-left: -5px;
+}
