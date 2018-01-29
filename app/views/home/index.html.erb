@@ -38,8 +38,8 @@
             <td><%= entry.comment %></td>
             <td><%= entry.date.strftime("%Y-%m-%d") %></td>
             <td>
-              <%= link_to 'Edit', edit_entry_path(entry) %>
-              <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure you want to continue?' } %>
+              <%= link_to (fa_icon "pencil"), edit_entry_path(entry) %>
+              <%= link_to (fa_icon "times"), entry, method: :delete, data: { confirm: 'Are you sure you want to continue?' } %>
             </td>
           </tr>
         <% end %>
@@ -62,7 +62,7 @@
       <% @categories.each do |category| %>
         <div class="list-group-item">
           <%= link_to(category.name + ' - ' + category.group, edit_category_path(category)) %>
-          <%= link_to ' - Destroy', category, method: :delete, data: { confirm: 'This will also delete all the associated entries. Are you sure you want to continue?' } %>
+          <%= link_to (fa_icon "times"), category, method: :delete, data: { confirm: 'This will also delete all the associated entries. Are you sure you want to continue?' } %>
         </div>
       <% end %>
     </div>
