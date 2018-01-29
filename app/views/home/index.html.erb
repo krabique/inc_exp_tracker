@@ -36,7 +36,7 @@
             <td><%= entry.category.name %></td>
             <td><%= entry.category.group %></td>
             <td><%= entry.comment %></td>
-            <td><%= entry.created_at %></td>
+            <td><%= entry.date.strftime("%Y-%m-%d") %></td>
             <td>
               <%= link_to 'Edit', edit_entry_path(entry) %>
               <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure you want to continue?' } %>

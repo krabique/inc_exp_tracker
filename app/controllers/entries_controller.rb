@@ -45,7 +45,7 @@ class EntriesController < ApplicationController
   end
 
   def entry_params
-    params.require(:entry).permit(:amount, :comment, :category_id)
+    params.require(:entry).permit(:amount, :comment, :category_id, :date)
   end
 
   def current_user_categories

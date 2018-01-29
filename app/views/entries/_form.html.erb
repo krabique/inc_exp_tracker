@@ -4,6 +4,7 @@
   <div class="form-inputs">
     <%= f.input :amount %>
     <%= f.input :comment %>
+    <%= f.input :date, discard_hour: true %>
     <%= f.association :category, collection: @current_user_categories %>
   </div>
 

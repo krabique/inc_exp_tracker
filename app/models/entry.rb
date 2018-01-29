@@ -10,6 +10,7 @@ class Entry < ApplicationRecord
   validates :user, presence: true
   validates :category, presence: true
   validates :comment, length: { maximum: 80 }
+  validates :date, presence: true
 
   validate :category_belongs_to_user
 

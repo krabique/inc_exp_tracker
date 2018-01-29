@@ -11,22 +11,18 @@ class HomeController < ApplicationController
   def filter_entries
     if !params[:category].blank? &&
        (!params[:start_date].blank? || !params[:end_date].blank?)
-      entry_query
-        .where(category_query_condition)
-        .where(date_query_condition)
+      entry_query.where(category_query_condition).where(date_query_condition)
     elsif !params[:category].blank?
-      entry_query
-        .where(category_query_condition)
+      entry_query.where(category_query_condition)
     elsif !params[:start_date].blank? || !params[:end_date].blank?
-      entry_query
-        .where(date_query_condition)
+      entry_query.where(date_query_condition)
     else
       current_user.entries.includes(:category)
     end
   end
 
   def entry_query
-    current_user.entries.joins(:category).order('created_at DESC')
+    current_user.entries.joins(:category).order('date DESC')
   end
 
   def start_date
@@ -42,8 +38,8 @@ class HomeController < ApplicationController
   end
 
   def date_query_condition
-    { created_at: Time.parse(start_date)..Time.parse(end_date) }
-    rescue ArgumentError
-      redirect_back alert: 'Invalid date', fallback_location: root_path
+    { date: Time.parse(start_date)..Time.parse(end_date) }
+  rescue ArgumentError
+    redirect_back alert: 'Invalid date', fallback_location: root_path
   end
 end
