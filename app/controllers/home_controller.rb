@@ -43,5 +43,7 @@ class HomeController < ApplicationController
 
   def date_query_condition
     { created_at: Time.parse(start_date)..Time.parse(end_date) }
+    rescue ArgumentError
+      redirect_back alert: 'Invalid date', fallback_location: root_path
   end
 end
