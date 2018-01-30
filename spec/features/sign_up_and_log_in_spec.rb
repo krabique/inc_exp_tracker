@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.feature 'SignUpsAndLogIns', type: :feature do
   email = 'names@namie.com'
   password = 'abcd1234'
-  
+
   scenario 'a visitor can sign up' do
     expect do
       visit '/users/sign_up'

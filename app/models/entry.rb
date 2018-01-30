@@ -19,7 +19,10 @@ class Entry < ApplicationRecord
   private
 
   def category_belongs_to_user
-    errors.add(:category_id, 'does not belong to this user') unless
-      user.categories.include?(category)
+    if category.nil?
+      errors.add(:category_id, 'cannot be blank')
+    elsif !user.categories.include?(category)
+      errors.add(:category_id, 'does not belong to this user')
+    end
   end
 end
