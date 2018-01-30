@@ -5,11 +5,11 @@ FactoryBot.define do
     name             { Faker::DrWho.character }
     group            { 'incomes' }
     user
-    
+
     factory :incomes_category do
       group          { 'incomes' }
     end
-    
+
     factory :expenses_category do
       group          { 'expenses' }
     end

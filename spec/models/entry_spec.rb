@@ -6,7 +6,7 @@ RSpec.describe Entry, type: :model do
   let(:user) { create(:user) }
   let(:category) { create(:category, user: user) }
   let(:entry) { create(:entry, category: category, user: user) }
-  
+
   context 'validations' do
     it 'monetizes amount_cents' do
       expect(entry).to monetize(:amount_cents)
@@ -26,9 +26,9 @@ RSpec.describe Entry, type: :model do
       it 'does not let the entry to be assigned to a category of a ' \
          'different user' do
         entry = Entry.new(attributes_for(
-          :entry,
-          user_id: user_one.id,
-          category_id: category_two.id
+                            :entry,
+                            user_id: user_one.id,
+                            category_id: category_two.id
         ))
 
         entry.valid?
