@@ -10,7 +10,7 @@ class Category < ApplicationRecord
   validates :name,
             presence: true,
             length: { minimum: 1, maximum: 80 },
-            uniqueness: { scope: :user }
+            uniqueness: { scope: :user_id }
   validates :group, presence: true, inclusion:
     { in: category_group_options }
 end
