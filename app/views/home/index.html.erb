@@ -2,6 +2,11 @@
   <h3 class="text-center">My Entries</h3>
   
   <div class="form-group">
+    <div class="filter-labels">
+      <div class="filter-labels-inner">Category</div>
+      <div class="filter-labels-inner">Start date</div>
+      <div class="filter-labels-inner">End date</div>
+    </div>
     <%= form_tag(root_path, :method => "get",
       id: "search-form") do %>
       <%= collection_select(
