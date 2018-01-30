@@ -7,10 +7,6 @@ class CategoriesController < ApplicationController
   before_action :category_group_options, only: %i[new edit create update]
   before_action :authorize_action, only: %i[edit update destroy]
 
-  def index
-    @categories = current_user.categories
-  end
-
   def new
     @category = current_user.categories.new
   end
