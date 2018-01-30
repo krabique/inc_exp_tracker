@@ -1,7 +1,6 @@
 AllCops:
   TargetRubyVersion: 2.4
   Exclude:
-    - spec/**/*
     - db/schema.rb
 Style/Documentation:
   Enabled: false
