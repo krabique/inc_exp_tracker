@@ -40,8 +40,12 @@ class HomeController < ApplicationController
   end
 
   def date_query_condition
-    { date: Time.zone.parse(start_date)..Time.zone.parse(end_date) }
-  rescue ArgumentError
-    redirect_back alert: 'Invalid date', fallback_location: root_path
+    parsed_start_date = Time.zone.parse(start_date)
+    parsed_end_date = Time.zone.parse(end_date)
+
+    redirect_back(alert: 'Invalid date', fallback_location: root_path) if
+      parsed_start_date.nil? || parsed_end_date.nil?
+
+    { date: parsed_start_date..parsed_end_date }
   end
 end
