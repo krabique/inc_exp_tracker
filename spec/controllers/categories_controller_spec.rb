@@ -104,7 +104,7 @@ RSpec.describe CategoriesController, type: :controller do
           expect(assigns(:category).name).to eq initial_name
         end
 
-        it 're-renders the :new template' do
+        it 're-renders the :edit template' do
           put :update, params: { id: category.id, category: { group: 'abc' } }
 
           expect(response).to render_template :edit
