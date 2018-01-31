@@ -19,6 +19,8 @@ Live preview is available at https://pacific-springs-78455.herokuapp.com/ (you w
 - safe and secure
 - tracks your damn money!
 - etc.
+ 
+This app is built with ruby 2.4.3, rails 5.1.4 and utilizes Bootstrap 4 with FontAwesome icons for the web pages. The layout is fully compatible with any screen size. The database used is PostgreSQL.
 
 ### Entries
 
