@@ -59,7 +59,7 @@ RSpec.describe CategoriesController, type: :controller do
         post :create, params: { category: attributes_for(
           :category, user_id: another_user.id
         ) }
-        expect(Category.last.user).to eq user
+        expect(Category.last.user).to_not eq another_user
       end
 
       it 'redirects to the home page' do
@@ -130,7 +130,7 @@ RSpec.describe CategoriesController, type: :controller do
     end
   end
 
-  describe 'PUT #update' do
+  describe 'DELETE #destroy' do
     context "with user's own categories" do
       let!(:category) { create(:category, user: user) }
 
@@ -142,13 +142,19 @@ RSpec.describe CategoriesController, type: :controller do
     end
 
     context "with other users' categories" do
+      let!(:user) { create(:user) }
       let(:another_user) { create(:user) }
-      let!(:category) { create(:category, user: another_user) }
+      let!(:others_category) { create(:category, user: another_user) }
 
       it 'does not destroy the category' do
         expect do
-          delete :destroy, params: { id: category.id }
+          delete :destroy, params: { id: others_category.id }
         end.to_not change(Category, :count)
+      end
+
+      it 'redirects to the home page' do
+        delete :destroy, params: { id: others_category.id }
+        expect(response).to redirect_to root_path
       end
     end
   end
