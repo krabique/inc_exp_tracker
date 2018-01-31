@@ -6,5 +6,6 @@ FactoryBot.define do
     comment       { 'abc' }
     user
     category
+    date { Time.new }
   end
 end

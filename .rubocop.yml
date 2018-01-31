@@ -15,6 +15,7 @@ Metrics/BlockLength:
     - config/initializers/simple_form_bootstrap.rb
     - Guardfile
     - spec/models/entry_spec.rb
+    - spec/controllers/categories_controller_spec.rb
 
 Metrics/MethodLength:
   Exclude:

@@ -13,5 +13,9 @@ FactoryBot.define do
     factory :expenses_category do
       group          { 'expenses' }
     end
+
+    factory :invalid_category do
+      group          { Faker::DrWho.specie }
+    end
   end
 end
