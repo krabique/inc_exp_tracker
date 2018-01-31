@@ -32,7 +32,7 @@ class HomeController < ApplicationController
   end
 
   def end_date
-    params[:end_date].blank? ? Time.now.to_s : params[:end_date]
+    params[:end_date].blank? ? Time.zone.now.to_s : params[:end_date]
   end
 
   def category_query_condition
@@ -40,7 +40,7 @@ class HomeController < ApplicationController
   end
 
   def date_query_condition
-    { date: Time.parse(start_date)..Time.parse(end_date) }
+    { date: Time.zone.parse(start_date)..Time.zone.parse(end_date) }
   rescue ArgumentError
     redirect_back alert: 'Invalid date', fallback_location: root_path
   end
