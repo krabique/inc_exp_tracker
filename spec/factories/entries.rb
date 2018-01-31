@@ -7,5 +7,9 @@ FactoryBot.define do
     user
     category
     date { Time.new }
+
+    factory :invalid_entry do
+      amount { 'abc' }
+    end
   end
 end

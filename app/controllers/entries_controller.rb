@@ -30,12 +30,8 @@ class EntriesController < ApplicationController
   end
 
   def destroy
-    if current_user.entries.include?(@entry)
-      @entry.destroy
-      redirect_to root_path, notice: 'Entry was successfully destroyed.'
-    else
-      redirect_to root_path, notice: 'That entry does not belong to this user'
-    end
+    @entry.destroy
+    redirect_to root_path, notice: 'Entry was successfully destroyed.'
   end
 
   private

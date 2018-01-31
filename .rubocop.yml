@@ -16,6 +16,7 @@ Metrics/BlockLength:
     - Guardfile
     - spec/models/entry_spec.rb
     - spec/controllers/categories_controller_spec.rb
+    - spec/controllers/entries_controller_spec.rb
 
 Metrics/MethodLength:
   Exclude:
@@ -38,3 +39,11 @@ Metrics/CyclomaticComplexity:
 Metrics/PerceivedComplexity:
   Exclude:
     - app/controllers/home_controller.rb
+
+Style/BlockDelimiters:
+  Exclude:
+    - spec/controllers/entries_controller_spec.rb
+    
+Layout/MultilineBlockLayout:
+  Exclude:
+    - spec/controllers/entries_controller_spec.rb
