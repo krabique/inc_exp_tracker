@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :entry do
-    amount        { 100 }
+    amount        { Random.rand(1000) }
     comment       { 'abc' }
     user
     category

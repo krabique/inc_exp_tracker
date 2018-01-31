@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :category do
-    name             { Faker::DrWho.character }
+    sequence(:name, 'a') { |n| n + Faker::DrWho.character }
     group            { 'incomes' }
     user
 
