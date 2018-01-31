@@ -17,6 +17,7 @@ Metrics/BlockLength:
     - spec/models/entry_spec.rb
     - spec/controllers/categories_controller_spec.rb
     - spec/controllers/entries_controller_spec.rb
+    - spec/controllers/home_controller_spec.rb
 
 Metrics/MethodLength:
   Exclude:
@@ -43,6 +44,7 @@ Metrics/PerceivedComplexity:
 Style/BlockDelimiters:
   Exclude:
     - spec/controllers/entries_controller_spec.rb
+    - spec/controllers/home_controller_spec.rb
     
 Layout/MultilineBlockLayout:
   Exclude:
