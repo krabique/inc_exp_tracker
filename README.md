@@ -26,7 +26,7 @@ Looks like this, behaves intuitively, simply awesome.
 
 ![entries filter!](https://raw.githubusercontent.com/krabique/inc_exp_tracker/master/1.png "entries filter")
 
-It's also adaptive!
+It's also responsive!
 
 ![adaprive!](https://raw.githubusercontent.com/krabique/inc_exp_tracker/master/2.png "adaptive")
 
