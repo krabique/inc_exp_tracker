@@ -61,6 +61,13 @@ RSpec.describe CategoriesController, type: :controller do
         ) }
         expect(Category.last.user).to eq user
       end
+
+      it 'redirects to the home page' do
+        post :create, params: { category: attributes_for(
+          :category, user_id: another_user.id
+        ) }
+        expect(response).to redirect_to root_path
+      end
     end
   end
 
