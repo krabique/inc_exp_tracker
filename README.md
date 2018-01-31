@@ -23,9 +23,11 @@ Live preview is available at https://pacific-springs-78455.herokuapp.com/ (you w
 ### Entries
 
 Looks like this, behaves intuitively, simply awesome. 
+
 ![entries filter!](https://raw.githubusercontent.com/krabique/inc_exp_tracker/master/1.png "entries filter")
 
 It's also adaptive!
+
 ![adaprive!](https://raw.githubusercontent.com/krabique/inc_exp_tracker/master/2.png "adaptive")
 
 ## Getting Started
